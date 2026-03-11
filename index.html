@@ -7,6 +7,9 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" href="img/268009_smart-light-bulb-icon.svg" type="image/svg+xml">
   <style>
+    * {
+      box-sizing: border-box;
+    }
     /* Fade in animation */
     .fade-in { opacity: 0; transform: translateY(20px); transition: all 1s ease; }
     .fade-in.show { opacity: 1; transform: translateY(0); }
@@ -21,7 +24,7 @@
     .slide-left.show, .slide-right.show { opacity: 1; transform: translateX(0); }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-gray-50 text-gray-800 font-sans overflow-x-hidden">
 
 <!-- Header -->
 <header class="bg-blue-900 text-white shadow-md">
@@ -57,13 +60,13 @@
 <section class="bg-blue-800 text-white py-12 px-3 text-center">
   <h1 class="text-xl sm:text-2xl md:text-5xl font-bold mb-4">Invest Smarter With Prime Wealth</h1>
   <p class="text-sm sm:text-base md:text-lg">Your trusted partner for crypto and financial investments.</p>
-  <button onclick="openSignup()" class="w-full sm:w-auto bg-teal-500 px-6 py-3 rounded-lg font-semibold hover:bg-teal-600 transition">Get Started</button>
+  <button onclick="openSignup()" class="w-full sm:w-auto bg-teal-500 px-4 sm:px-6 py-3 rounded-lg font-semibold hover:bg-teal-600 transition">Get Started</button>
 </section>
 
 <!-- Signup Modal -->
 <div id="signup-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
   <div class="bg-white rounded-lg shadow-lg max-w-sm sm:max-w-md w-full p-6 relative mx-4">
-    <button onclick="closeSignup()" class="absolute top-3 right-3 text-gray-500 hover:text-black text-xl">×</button>
+    <button onclick="closeSignup()" class="absolute top-3 right-3 text-gray-500 hover:text-black text-xl">X</button>
     <h2 class="text-2xl font-semibold text-blue-900 mb-4">Create Your Account</h2>
     <form class="space-y-4">
       <div>
@@ -94,7 +97,7 @@
   <div class="max-w-5xl mx-auto">
     <h2 class="text-2xl font-semibold text-blue-900 mb-4">📊 Live Market Prices</h2>
     <p class="text-gray-700 mb-6">Track real-time cryptocurrency prices and market trends below:</p>
-    <div class="rounded-lg overflow-hidden shadow-md overflow-x-auto">
+    <div class="overflow-x-auto rounded-lg shadow-md">
       <iframe src="https://widget.coinlib.io/widget?type=full_v2&theme=light&cnt=5&pref_coin_id=1505" width="100%" height="400" scrolling="auto" frameborder="0" class="w-full border-0"></iframe>
     </div>
   </div>
