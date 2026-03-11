@@ -15,6 +15,29 @@
 .market-animate { opacity: 0; transform: scale(0.95); transition: all 1s ease; }
 .market-animate.show { opacity: 1; transform: scale(1); }
 </style>
+  <style>
+  /* Initial hidden state */
+  .slide-left, .slide-right {
+    opacity: 0;
+    transform: translateX(50px); /* Right slide default */
+    transition: all 0.6s ease-out;
+  }
+
+  .slide-left {
+    transform: translateX(-50px); /* Start slightly left */
+  }
+
+  .slide-right {
+    transform: translateX(50px); /* Start slightly right */
+  }
+
+  /* Show state */
+  .slide-left.show,
+  .slide-right.show {
+    opacity: 1;
+    transform: translateX(0);
+  }
+</style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans overflow-x-hidden">
 
@@ -187,3 +210,4 @@
 </script>
 </body>
 </html>
+
