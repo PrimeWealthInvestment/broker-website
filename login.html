@@ -14,6 +14,42 @@
   <meta property="og:image" content="https://img.freepik.com/premium-photo/arrow-logo-illustration-design-vector-images_959624-72022.jpg">
   <meta property="og:url" content="https://yourdomain.com">
   <meta property="og:type" content="website">
+  <style>
+  /* Fade in */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+  }
+
+  /* Slide in left */
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-40px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  .slide-in-left {
+    opacity: 0;
+    animation: slideInLeft 1s ease forwards;
+  }
+
+  /* Slide in right */
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(40px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  .slide-in-right {
+    opacity: 0;
+    animation: slideInRight 1s ease forwards;
+  }
+
+  /* Trigger when visible */
+  .animate-visible {
+    opacity: 1 !important;
+  }
+</style>
 </head>
 
 <body class="bg-gray-50 text-gray-800 font-sans">
@@ -52,7 +88,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-      <div class="bg-white p-6 rounded-lg shadow">
+      <div class="bg-white p-6 rounded-lg shadow fade-in">
         <h2 class="text-xl font-semibold text-blue-800 mb-2">🌍 Our Mission</h2>
         <p class="text-gray-700">
           To democratize access to financial markets by providing intuitive
@@ -60,14 +96,14 @@
         </p>
       </div>
 
-      <div class="bg-white p-6 rounded-lg shadow">
+      <div class="bg-white p-6 rounded-lg shadow fade-in">
         <h2 class="text-xl font-semibold text-blue-800 mb-2">🚀 Our Vision</h2>
         <p class="text-gray-700">
           To become the most trusted digital broker for emerging markets.
         </p>
       </div>
 
-      <div class="bg-white p-6 rounded-lg shadow md:col-span-2">
+      <div class="bg-white p-6 rounded-lg shadow md:col-span-2 fade-in">
         <h2 class="text-xl font-semibold text-blue-800 mb-2">👥 Our Team</h2>
         <p class="text-gray-700">
           We’re a diverse group of developers, analysts, and educators
@@ -93,32 +129,32 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-      <div class="bg-gray-50 p-6 rounded-lg shadow">
+      <div class="bg-gray-50 p-6 rounded-lg shadow slide-in-left">
         <h3 class="text-lg font-semibold text-blue-800 mb-2">Real-Time Market Data</h3>
         <p class="text-sm text-gray-700">Access live crypto and forex prices.</p>
       </div>
 
-      <div class="bg-gray-50 p-6 rounded-lg shadow">
+      <div class="bg-gray-50 p-6 rounded-lg shadow slide-in-right">
         <h3 class="text-lg font-semibold text-blue-800 mb-2">Secure Funding</h3>
         <p class="text-sm text-gray-700">Deposit via bank, card or crypto.</p>
       </div>
 
-      <div class="bg-gray-50 p-6 rounded-lg shadow">
+      <div class="bg-gray-50 p-6 rounded-lg shadow slide-in-left">
         <h3 class="text-lg font-semibold text-blue-800 mb-2">Trading Dashboard</h3>
         <p class="text-sm text-gray-700">Track and manage investments.</p>
       </div>
 
-      <div class="bg-gray-50 p-6 rounded-lg shadow">
+      <div class="bg-gray-50 p-6 rounded-lg shadow slide-in-right">
         <h3 class="text-lg font-semibold text-blue-800 mb-2">Educational Resources</h3>
         <p class="text-sm text-gray-700">Learn strategies and risk management.</p>
       </div>
 
-      <div class="bg-gray-50 p-6 rounded-lg shadow">
+      <div class="bg-gray-50 p-6 rounded-lg shadow slide-in-left">
         <h3 class="text-lg font-semibold text-blue-800 mb-2">24/7 Support</h3>
         <p class="text-sm text-gray-700">WhatsApp and email support anytime.</p>
       </div>
 
-      <div class="bg-gray-50 p-6 rounded-lg shadow">
+      <div class="bg-gray-50 p-6 rounded-lg shadow slide-in-right">
         <h3 class="text-lg font-semibold text-blue-800 mb-2">Paper Trading</h3>
         <p class="text-sm text-gray-700">Practice trading risk-free.</p>
       </div>
@@ -201,8 +237,22 @@ function logout() {
   window.location.href = "login.html";
 }
 </script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-visible');
+        }
+      });
+    }, { threshold: 0.2 });
 
+    animatedElements.forEach(el => observer.observe(el));
+  });
+</script>
 </body>
 </html>
+
 
 
