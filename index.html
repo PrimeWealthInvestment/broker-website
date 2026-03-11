@@ -5,51 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Prime Wealth Investment | Your Vetted & Trusted Investment Partner</title>
   <script src="https://cdn.tailwindcss.com"></script>
-<link rel="icon" href="img/268009_smart-light-bulb-icon.svg" type="image/svg+xml">
+  <link rel="icon" href="img/268009_smart-light-bulb-icon.svg" type="image/svg+xml">
   <style>
-/* Fade in animation */
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 1s ease;
-}
+    /* Fade in animation */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: all 1s ease; }
+    .fade-in.show { opacity: 1; transform: translateY(0); }
 
-.fade-in.show {
-  opacity: 1;
-  transform: translateY(0);
-}
+    /* Market smooth zoom */
+    .market-animate { opacity: 0; transform: scale(0.95); transition: all 1s ease; }
+    .market-animate.show { opacity: 1; transform: scale(1); }
 
-/* Market smooth zoom */
-.market-animate {
-  opacity: 0;
-  transform: scale(0.95);
-  transition: all 1s ease;
-}
-
-.market-animate.show {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Slide animations */
-.slide-left {
-  opacity: 0;
-  transform: translateX(-50px);
-  transition: all 0.9s ease;
-}
-
-.slide-right {
-  opacity: 0;
-  transform: translateX(50px);
-  transition: all 0.9s ease;
-}
-
-.slide-left.show,
-.slide-right.show {
-  opacity: 1;
-  transform: translateX(0);
-}
-</style>
+    /* Slide animations */
+    .slide-left { opacity: 0; transform: translateX(-50px); transition: all 0.9s ease; }
+    .slide-right { opacity: 0; transform: translateX(50px); transition: all 0.9s ease; }
+    .slide-left.show, .slide-right.show { opacity: 1; transform: translateX(0); }
+  </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
 
@@ -67,22 +37,11 @@
       </nav>
       <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
     </div>
-<section class="bg-blue-800 text-white py-16 px-6 text-center">
-  <h1 class="text-3xl md:text-5xl font-bold mb-4">
-    Invest Smarter With Prime Wealth
-  </h1>
-  <p class="text-lg text-blue-100 mb-6">
-    Your trusted partner for crypto and financial investments.
-  </p>
-  <button onclick="openSignup()" class="bg-teal-500 px-6 py-3 rounded-lg font-semibold hover:bg-teal-600">
-    Get Started
-  </button>
-</section>
+
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="md:hidden hidden px-6 pb-4 space-y-3 bg-blue-900">
       <a href="#register" class="block text-white hover:text-teal-300">Register</a>
@@ -93,240 +52,172 @@
       <a href="#contact" class="block text-white hover:text-teal-300">Contact</a>
     </div>
   </header>
+
+  <!-- Hero Section -->
+  <section class="bg-blue-800 text-white py-16 px-6 text-center">
+    <h1 class="text-3xl md:text-5xl font-bold mb-4">Invest Smarter With Prime Wealth</h1>
+    <p class="text-lg text-blue-100 mb-6">Your trusted partner for crypto and financial investments.</p>
+    <button onclick="openSignup()" class="bg-teal-500 px-6 py-3 rounded-lg font-semibold hover:bg-teal-600">Get Started</button>
+  </section>
+
+  <!-- Navigation -->
   <nav class="flex justify-center gap-4 py-4">
-  <a href="index.html" class="px-4 py-2 text-sm bg-blue-600 text-white rounded hover:bg-blue-700">HOME</a>
-  <a href="login.html" class="px-4 py-2 text-sm bg-green-600 text-white rounded hover:bg-green-700">DASHBOARD</a>
-</nav>
+    <a href="index.html" class="px-4 py-2 text-sm bg-blue-600 text-white rounded hover:bg-blue-700">HOME</a>
+    <a href="login.html" class="px-4 py-2 text-sm bg-green-600 text-white rounded hover:bg-green-700">DASHBOARD</a>
+  </nav>
+
+  <!-- Signup Modal -->
+  <div id="signup-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
+    <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative">
+      <button onclick="closeSignup()" class="absolute top-3 right-3 text-gray-500 hover:text-black text-xl">×</button>
+      <h2 class="text-2xl font-semibold text-blue-900 mb-4">Create Your Account</h2>
+      <form class="space-y-4">
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+          <input type="text" id="name" name="name" required class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+          <input type="email" id="email" name="email" required class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+          <input type="password" id="password" name="password" required class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition">Sign Up</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 📊 Live Market Prices -->
+  <section id="markets" class="bg-gray-100 py-12 px-4 md:px-6 market-animate">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-2xl font-semibold text-blue-900 mb-4">📊 Live Market Prices</h2>
+      <p class="text-gray-700 mb-6">Track real-time cryptocurrency prices and market trends below:</p>
+      <div class="rounded-lg overflow-hidden shadow-md">
+        <iframe src="https://widget.coinlib.io/widget?type=full_v2&theme=light&cnt=5&pref_coin_id=1505" width="100%" height="400" scrolling="auto" frameborder="0" class="w-full border-0"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- 📈 Trading Tools -->
+  <section id="tools" class="bg-white py-12 px-4 md:px-6 fade-in">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-2xl font-semibold text-blue-900 mb-4">📈 Interactive Trading Chart</h2>
+      <p class="text-gray-700 mb-6">Analyze market trends with our real-time charting tools:</p>
+      <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+        <div class="relative w-full h-64 md:h-96">
+          <canvas id="chart"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 📚 Education & Insights -->
+  <section id="education" class="bg-gray-50 py-12 px-4 md:px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <a href="#" class="block bg-white p-6 rounded-lg shadow hover:shadow-lg transition slide-left">
+        <h3 class="text-lg font-semibold text-blue-800 mb-2">Beginner's Guide to Trading</h3>
+        <p class="text-sm text-gray-600">Start your journey with the basics of investing and market behavior.</p>
+      </a>
+      <a href="#" class="block bg-white p-6 rounded-lg shadow hover:shadow-lg transition slide-right">
+        <h3 class="text-lg font-semibold text-blue-800 mb-2">Understanding Technical Analysis</h3>
+        <p class="text-sm text-gray-600">Learn how to read charts, spot trends, and use indicators effectively.</p>
+      </a>
+      <a href="#" class="block bg-white p-6 rounded-lg shadow hover:shadow-lg transition slide-left">
+        <h3 class="text-lg font-semibold text-blue-800 mb-2">Crypto Market Trends</h3>
+        <p class="text-sm text-gray-600">Stay updated on the latest movements and insights in the crypto space.</p>
+      </a>
+      <a href="#" class="block bg-white p-6 rounded-lg shadow hover:shadow-lg transition slide-right">
+        <h3 class="text-lg font-semibold text-blue-800 mb-2">How to Manage Risk</h3>
+        <p class="text-sm text-gray-600">Protect your capital with smart risk management strategies and tools.</p>
+      </a>
+      <a href="#" class="block bg-white p-6 rounded-lg shadow hover:shadow-lg transition slide-left">
+        <h3 class="text-lg font-semibold text-blue-800 mb-2">Trading Psychology</h3>
+        <p class="text-sm text-gray-600">Master your mindset and emotions to become a disciplined trader.</p>
+      </a>
+      <a href="#" class="block bg-white p-6 rounded-lg shadow hover:shadow-lg transition slide-right">
+        <h3 class="text-lg font-semibold text-blue-800 mb-2">Market News & Analysis</h3>
+        <p class="text-sm text-gray-600">Get expert commentary and breakdowns of key financial events.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- 📞 Contact Section -->
+  <section id="contact" class="bg-gray-100 py-12 px-4 md:px-6">
+    <div class="max-w-xl mx-auto">
+      <h2 class="text-2xl font-semibold text-blue-900 mb-4">📞 Contact Us</h2>
+      <p class="text-gray-700 mb-6">Have questions or need help? Send us a message:</p>
+      <form id="contact-form" class="space-y-5">
+        <div>
+          <label for="contact-name" class="block text-sm font-medium text-gray-700">Your Name</label>
+          <input type="text" id="contact-name" placeholder="Jane Doe" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-4 py-2 focus:ring-teal-500 focus:border-teal-500" />
+        </div>
+        <div>
+          <label for="contact-email" class="block text-sm font-medium text-gray-700">Email</label>
+          <input type="email" id="contact-email" placeholder="jane@example.com" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-4 py-2 focus:ring-teal-500 focus:border-teal-500" />
+        </div>
+        <div>
+          <label for="contact-message" class="block text-sm font-medium text-gray-700">Message</label>
+          <textarea id="contact-message" rows="5" placeholder="How can we help you?" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-4 py-2 focus:ring-teal-500 focus:border-teal-500"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-teal-600 text-white py-2 px-4 rounded-md hover:bg-teal-700 transition">Send Message</button>
+        <p id="contact-response" class="text-sm text-green-600 mt-2"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- 🔚 Footer -->
+  <footer class="bg-blue-900 text-white text-center py-8 px-6">
+    <div class="max-w-6xl mx-auto">
+      <p class="text-lg font-semibold">Prime Wealth Investment</p>
+      <p class="text-sm mt-2">© 2026 Prime Wealth Investment. All rights reserved.</p>
+      <div class="mt-4 space-x-4 text-sm">
+        <a href="#register" class="hover:text-teal-300">Register</a>
+        <a href="#education" class="hover:text-teal-300">Education</a>
+        <a href="#contact" class="hover:text-teal-300">Contact</a>
+      </div>
+      <p class="text-xs mt-4">Trading involves risk. Please read our <a href="#" class="underline text-teal-300">disclaimer</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     function toggleMenu() {
-      const menu = document.getElementById('mobile-menu');
-      menu.classList.toggle('hidden');
+      document.getElementById('mobile-menu').classList.toggle('hidden');
     }
+
+    function closeSignup() {
+      document.getElementById('signup-modal').classList.add('hidden');
+    }
+
+    // IntersectionObserver for animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.classList.add('show');
+      });
+    });
+    document.querySelectorAll(".fade-in, .slide-left, .slide-right, .market-animate").forEach(el => observer.observe(el));
+
+    // Chart.js Initialization
+    const ctx = document.getElementById('chart').getContext('2d');
+    const chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Mon','Tue','Wed','Thu','Fri'],
+        datasets:[{
+          label:'BTC/USD',
+          data:[42000,43000,41000,44000,45000],
+          borderColor:'#0a3d62',
+          backgroundColor:'rgba(10,61,98,0.1)',
+          tension:0.3,
+          fill:true
+        }]
+      },
+      options: { responsive:true, plugins:{legend:{display:true, position:'top'}}, scales:{y:{beginAtZero:false}} }
+    });
   </script>
-<!-- Signup Modal -->
-<div id="signup-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
 
-  <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative">
-
-    <!-- Close Button -->
-    <button onclick="closeSignup()" class="absolute top-3 right-3 text-gray-500 hover:text-black text-xl">
-      ×
-    </button>
-
-    <!-- Heading -->
-    <h2 class="text-2xl font-semibold text-blue-900 mb-4">Create Your Account</h2>
-
-    <!-- Signup Form -->
-    <form class="space-y-4">
-      <!-- Name -->
-      <div>
-        <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
-        <input type="text" id="name" name="name" required
-          class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-      </div>
-
-      <!-- Email -->
-      <div>
-        <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
-        <input type="email" id="email" name="email" required
-          class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-      </div>
-
-      <!-- Password -->
-      <div>
-        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-        <input type="password" id="password" name="password" required
-          class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-      </div>
-
-      <!-- Submit Button -->
-      <button type="submit"
-        class="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition">
-        Sign Up
-      </button>
-    </form>
-  </div>
-</div>
-<script>
- function closeSignup() {
-  const modal = document.getElementById("signup-modal");
-
-  modal.classList.remove("flex");
-  modal.classList.add("hidden");
-}
-
-</script>
-<!-- 📊 Live Market Prices -->
-<section id="markets" class="bg-gray-100 py-12 px-4 md:px-6">
-  <div class="max-w-5xl mx-auto">
-    <h2 class="text-2xl font-semibold text-blue-900 mb-4">📊 Live Market Prices</h2>
-    <p class="text-gray-700 mb-6">Track real-time cryptocurrency prices and market trends below:</p>
-<div class="rounded-lg overflow-hidden shadow-md market-animate">
-  <iframe src="https://widget.coinlib.io/widget?type=full_v2&theme=light&cnt=5&pref_coin_id=1505"
-          width="100%" height="400" scrolling="auto" frameborder="0"
-          class="w-full border-0">
-  </iframe>
-  </div>
-</section>
-  <script>
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-    }
-  });
-});
-
-// Select all fade and slide elements
-const elements = document.querySelectorAll(
-  ".fade-in, .slide-left, .slide-right, .market-animate"
-);
-
-elements.forEach((el) => observer.observe(el));
-</script>
-  
-<!-- 📈 Trading Tools -->
-<section id="tools" class="bg-white py-12 px-4 md:px-6 fade-in">
-  <div class="max-w-5xl mx-auto">
-    <h2 class="text-2xl font-semibold text-blue-900 mb-4">📈 Interactive Trading Chart</h2>
-    <p class="text-gray-700 mb-6">Analyze market trends with our real-time charting tools:</p>
-    <div class="bg-gray-100 p-6 rounded-lg shadow-md">
-      <div class="relative w-full h-64 md:h-96">
-        <canvas id="chart"></canvas>
-      </div>
-    </div>
-  </div>
-</section>
-  <script>
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-    }
-  });
-});
-
-const elements = document.querySelectorAll(
-  ".fade-in, .slide-left, .slide-right, .market-animate"
-);
-
-elements.forEach((el) => observer.observe(el));
-</script>
 </body>
 </html>
-
-
-<!-- Chart.js Library -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<!-- Chart Initialization -->
-<script>
-  const ctx = document.getElementById('chart').getContext('2d');
-  const chart = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-      datasets: [{
-        label: 'BTC/USD',
-        data: [42000, 43000, 41000, 44000, 45000],
-        borderColor: '#0a3d62',
-        backgroundColor: 'rgba(10, 61, 98, 0.1)',
-        tension: 0.3,
-        fill: true
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: {
-          display: true,
-          position: 'top'
-        }
-      },
-      scales: {
-        y: {
-          beginAtZero: false
-        }
-      }
-    }
-  });
-</script>
-
-<!-- 📚 Education & Insights -->
-<section id="education" class="bg-gray-50 py-12 px-4 md:px-6">
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-  <a href="#" class="block bg-white p-6 rounded-lg shadow hover:shadow-lg transition slide-left">
-    <h3 class="text-lg font-semibold text-blue-800 mb-2">Beginner's Guide to Trading</h3>
-    <p class="text-sm text-gray-600">Start your journey with the basics of investing and market behavior.</p>
-  </a>
-  <a href="#" class="block bg-white p-6 rounded-lg shadow hover:shadow-lg transition slide-right">
-    <h3 class="text-lg font-semibold text-blue-800 mb-2">Understanding Technical Analysis</h3>
-    <p class="text-sm text-gray-600">Learn how to read charts, spot trends, and use indicators effectively.</p>
-  </a>
-  <a href="#" class="block bg-white p-6 rounded-lg shadow hover:shadow-lg transition slide-left">
-    <h3 class="text-lg font-semibold text-blue-800 mb-2">Crypto Market Trends</h3>
-    <p class="text-sm text-gray-600">Stay updated on the latest movements and insights in the crypto space.</p>
-  </a>
-  <a href="#" class="block bg-white p-6 rounded-lg shadow hover:shadow-lg transition slide-right">
-    <h3 class="text-lg font-semibold text-blue-800 mb-2">How to Manage Risk</h3>
-    <p class="text-sm text-gray-600">Protect your capital with smart risk management strategies and tools.</p>
-  </a>
-  <a href="#" class="block bg-white p-6 rounded-lg shadow hover:shadow-lg transition slide-left">
-    <h3 class="text-lg font-semibold text-blue-800 mb-2">Trading Psychology</h3>
-    <p class="text-sm text-gray-600">Master your mindset and emotions to become a disciplined trader.</p>
-  </a>
-  <a href="#" class="block bg-white p-6 rounded-lg shadow hover:shadow-lg transition slide-right">
-    <h3 class="text-lg font-semibold text-blue-800 mb-2">Market News & Analysis</h3>
-    <p class="text-sm text-gray-600">Get expert commentary and breakdowns of key financial events.</p>
-  </a>
-</div>
-</section>
-
-<!-- 📞 Contact Section -->
-<section id="contact" class="bg-gray-100 py-12 px-4 md:px-6">
-  <div class="max-w-xl mx-auto">
-    <h2 class="text-2xl font-semibold text-blue-900 mb-4">📞 Contact Us</h2>
-    <p class="text-gray-700 mb-6">Have questions or need help? Send us a message:</p>
-    <form id="contact-form" class="space-y-5">
-      <div>
-        <label for="contact-name" class="block text-sm font-medium text-gray-700">Your Name</label>
-        <input type="text" id="contact-name" placeholder="Jane Doe" required
-               class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-4 py-2 focus:ring-teal-500 focus:border-teal-500" />
-      </div>
-      <div>
-        <label for="contact-email" class="block text-sm font-medium text-gray-700">Email</label>
-        <input type="email" id="contact-email" placeholder="jane@example.com" required
-               class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-4 py-2 focus:ring-teal-500 focus:border-teal-500" />
-      </div>
-      <div>
-        <label for="contact-message" class="block text-sm font-medium text-gray-700">Message</label>
-        <textarea id="contact-message" rows="5" placeholder="How can we help you?" required
-                  class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-4 py-2 focus:ring-teal-500 focus:border-teal-500"></textarea>
-      </div>
-      <button type="submit"
-              class="w-full bg-teal-600 text-white py-2 px-4 rounded-md hover:bg-teal-700 transition">
-        
-        Send Message
-      </button>
-      <p id="contact-response" class="text-sm text-green-600 mt-2"></p>
-    </form>
-  </div>
-</section>
-
-<!-- 🔚 Footer -->
-<footer class="bg-blue-900 text-white text-center py-8 px-6">
-  <div class="max-w-6xl mx-auto">
-    <p class="text-lg font-semibold">Prime Wealth Investment</p>
-    <p class="text-sm mt-2">© 2026 Prime Wealth Investment. All rights reserved.</p>
-    <div class="mt-4 space-x-4 text-sm">
-      <a href="#register" class="hover:text-teal-300">Register</a>
-      <a href="#education" class="hover:text-teal-300">Education</a>
-      <a href="#contact" class="hover:text-teal-300">Contact</a>
-    </div>
-    <p class="text-xs mt-4">Trading involves risk. Please read our <a href="#" class="underline text-teal-300">disclaimer</a>.</p>
-  </div>
-</footer>
-
-
-
-
